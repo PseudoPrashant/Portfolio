@@ -1,103 +1,119 @@
-import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
-import { FiAward, FiExternalLink } from 'react-icons/fi'
+import { useState, useEffect } from 'react'
 
 const Certifications = () => {
-  const [ref, inView] = useInView({
-    threshold: 0.3,
-    triggerOnce: true
-  })
+  const [animateCertifications, setAnimateCertifications] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setAnimateCertifications(true), 600)
+    return () => clearTimeout(timer)
+  }, [])
 
   const certifications = [
     {
       title: "Machine Learning with Python",
-      issuer: "Teachnook",
-      period: "May 2023 – June 2023",
-      description: "Comprehensive training in machine learning algorithms and Python implementation.",
-      link: "https://drive.google.com/file/d/1BXDthYk7-_QA9UvM1mRBIy_U1rH8sEwv/view?usp=drive_link"
+      issuer: "Teachnook (Wissenaire - IIT BBS 2023)",
+      period: "2023",
+      description: "Comprehensive course covering machine learning algorithms, data preprocessing, and model evaluation using Python libraries.",
+      category: "AI & Machine Learning"
     },
     {
       title: "Power BI Course",
-      issuer: "TNX",
-      period: "May 2023 – June 2023",
-      description: "Professional training in data visualization and business intelligence using Power BI.",
-      link: "https://drive.google.com/file/d/1Ktjt4RNX7ROz7U636kq4ylvhhwQ_-F90/view?usp=drive_link"
+      issuer: "Teachnook (Wissenaire - IIT BBS 2023)",
+      period: "2023",
+      description: "Data visualization and business intelligence course covering Power BI desktop, DAX formulas, and dashboard creation.",
+      category: "Data Analysis"
     },
     {
-      title: "SHRINIK - Coding Festember Participation Award",
-      issuer: "Certificate of Participation",
+      title: "SHRINIK Coding Festember",
+      issuer: "G. L. Bajaj Institute",
       period: "2023",
-      description: "Ranked 6th out of 108 teams in the coding competition.",
-      link: "https://drive.google.com/file/d/1XCD6SQwaeish65_yJrk0g3yd6mM61iUI/view?usp=drive_link"
+      description: "Participated in competitive coding competition and achieved 6th position among 108 teams.",
+      category: "Competitive Programming"
     }
   ]
 
   return (
     <section id="certifications" className="py-20 bg-white dark:bg-gray-900">
-      <div className="container mx-auto px-4">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-4xl mx-auto"
-        >
-          <motion.h2 
-            className="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white"
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            Certifications
-          </motion.h2>
+      <div className="container mx-auto px-4 md:px-8 lg:px-12 xl:px-16">
+        <div className="max-w-7xl mx-auto">
+          {/* Enhanced Accent Bar */}
+          <div className="h-1.5 sm:h-2 w-16 sm:w-24 mx-auto mb-4 sm:mb-6 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 shadow-lg shadow-blue-500/20 animate-pulse" />
+          
+          <h2 className={`text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white ${
+            animateCertifications ? 'animate-in slide-in-from-top-2 duration-700' : 'opacity-0 -translate-y-8'
+          }`}>
+            Certifications & Achievements
+          </h2>
 
-          <div className="space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {certifications.map((cert, index) => (
-              <motion.div
-                key={cert.title}
-                className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 shadow-lg"
-                initial={{ opacity: 0, x: -50 }}
-                animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-                transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                whileHover={{ scale: 1.02 }}
+              <div
+                key={index}
+                className={`bg-gray-50 dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 ${
+                  animateCertifications ? 'animate-in slide-in-from-bottom-2 duration-500' : 'opacity-0 translate-y-8'
+                }`}
+                style={{ animationDelay: `${index * 200}ms` }}
               >
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0">
-                    <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-                      <FiAward className="w-6 h-6 text-blue-500" />
+                <div className="flex flex-col h-full">
+                  {/* Header */}
+                  <div className="flex items-center gap-3 mb-4 group">
+                    <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg group-hover:scale-110 transition-transform duration-300">
+                      {index === 0 ? (
+                        <span className="text-2xl">🤖</span>
+                      ) : index === 1 ? (
+                        <span className="text-2xl">📊</span>
+                      ) : (
+                        <span className="text-2xl">🏆</span>
+                      )}
+                    </div>
+                    <div className="flex-1">
+                      <span className="text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 px-2 py-1 rounded-full group-hover:bg-blue-200 dark:group-hover:bg-blue-800/40 transition-colors duration-300">
+                        {cert.category}
+                      </span>
                     </div>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                      {cert.link ? (
-                        <a 
-                          href={cert.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="hover:text-blue-500 transition-colors inline-flex items-center gap-2 group"
-                        >
-                          {cert.title}
-                          <FiExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                        </a>
-                      ) : (
-                        cert.title
-                      )}
-                    </h3>
-                    <p className="text-blue-500 dark:text-blue-400 font-medium mb-2">
-                      {cert.issuer}
-                    </p>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
-                      {cert.period}
-                    </p>
-                    <p className="text-gray-600 dark:text-gray-300">
+
+                  {/* Title */}
+                  <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white group">
+                    <span className="group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                      {cert.title}
+                    </span>
+                  </h3>
+
+                  {/* Issuer & Period */}
+                  <div className="flex items-center justify-between mb-3 text-sm">
+                    <span className="text-gray-600 dark:text-gray-400 group">
+                      <span className="group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
+                        {cert.issuer}
+                      </span>
+                    </span>
+                    <span className="text-blue-500 font-medium group">
+                      <span className="group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                        {cert.period}
+                      </span>
+                    </span>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed flex-grow group">
+                    <span className="group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors duration-300">
                       {cert.description}
-                    </p>
+                    </span>
+                  </p>
+
+                  {/* Action Button */}
+                  <div className="mt-4">
+                    <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg group">
+                      <span className="group-hover:translate-x-1 transition-transform duration-300 inline-block">
+                        View Certificate
+                      </span>
+                    </button>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

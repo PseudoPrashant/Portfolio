@@ -1,168 +1,173 @@
 import { useState, useEffect } from 'react'
-import { FiSun, FiMoon, FiMenu, FiX } from 'react-icons/fi'
-import { motion, AnimatePresence } from 'framer-motion'
-import { smoothScroll } from '../utils/smoothScroll'
 
-const Navbar = ({ theme, toggleTheme }) => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('home')
-  const [scrolled, setScrolled] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [animateNavbar, setAnimateNavbar] = useState(false)
+  const [isDark, setIsDark] = useState(false)
 
-  const navItems = [
-    { name: 'HOME', href: '#home' },
-    { name: 'ABOUT', href: '#about' },
-    { name: 'SKILLS', href: '#skills' },
-    { name: 'EDUCATION', href: '#education' },
-    { name: 'PROJECTS', href: '#projects' },
-    { name: 'CERTIFICATIONS', href: '#certifications' },
-    { name: 'CONTACT', href: '#contact' },
-  ]
+  useEffect(() => {
+    const timer = setTimeout(() => setAnimateNavbar(true), 50)
+    return () => clearTimeout(timer)
+  }, [])
 
-  // Update active section based on scroll position
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navItems.map(item => item.href.substring(1))
-      const currentSection = sections.find(section => {
-        const element = document.getElementById(section)
-        if (element) {
-          const rect = element.getBoundingClientRect()
-          return rect.top <= 100 && rect.bottom >= 100
-        }
-        return false
-      })
-      if (currentSection) {
-        setActiveSection(currentSection)
-      }
-      setScrolled(window.scrollY > 50)
+      setIsScrolled(window.scrollY > 50)
     }
-
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  return (
-    <motion.nav 
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-lg' : 'bg-transparent'
-      }`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ type: "spring", stiffness: 300, damping: 30 }}
-    >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <motion.a 
-            href="#home" 
-            className="text-xl font-bold text-blue-500"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={(e) => smoothScroll(e, '#home')}
-          >
-            PRASHANT.DEV
-          </motion.a>
+  useEffect(() => {
+    // Check if user has a saved theme preference
+    const savedTheme = localStorage.getItem('theme')
+    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      setIsDark(true)
+      document.documentElement.classList.add('dark')
+    } else {
+      setIsDark(false)
+      document.documentElement.classList.remove('dark')
+    }
+  }, [])
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item, index) => (
-              <motion.a
-                key={item.name}
-                href={item.href}
-                className={`text-sm font-medium transition-colors ${
-                  activeSection === item.href.substring(1)
-                    ? 'text-blue-500 dark:text-blue-400'
-                    : 'text-gray-700 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400'
-                }`}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  duration: 0.3,
-                  delay: index * 0.1,
-                  ease: "easeOut"
-                }}
-                whileHover={{ y: -2 }}
-                whileTap={{ y: 0 }}
-                onClick={(e) => smoothScroll(e, item.href)}
-              >
-                {item.name}
-              </motion.a>
-            ))}
-            <motion.button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300"
-              aria-label="Toggle theme"
-              whileHover={{ scale: 1.1, rotate: 180 }}
-              whileTap={{ scale: 0.9 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+  const toggleTheme = () => {
+    const newTheme = !isDark
+    setIsDark(newTheme)
+    
+    if (newTheme) {
+      document.documentElement.classList.add('dark')
+      localStorage.setItem('theme', 'dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+      localStorage.setItem('theme', 'light')
+    }
+  }
+
+  const navItems = [
+    { name: 'Home', href: '#hero' },
+    { name: 'About', href: '#about' },
+    { name: 'Skills', href: '#skills' },
+    { name: 'Education', href: '#education' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Certifications', href: '#certifications' },
+    { name: 'Contact', href: '#contact' }
+  ]
+
+  return (
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      isScrolled 
+        ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-lg border-b border-gray-200 dark:border-gray-700' 
+        : 'bg-transparent'
+    }`}>
+      <div className="container mx-auto px-4 md:px-8 lg:px-12 xl:px-16">
+        <div className="flex items-center justify-between h-16 md:h-20">
+          {/* Logo */}
+          <div className={`flex items-center space-x-2 group ${
+            animateNavbar ? 'animate-in slide-in-from-left-2 duration-500' : 'opacity-0 -translate-x-8'
+          }`}>
+            <a
+              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`text-xl md:text-2xl font-bold transition-all duration-300 cursor-pointer ${
+                isScrolled 
+                  ? 'text-gray-900 dark:text-white' 
+                  : 'text-gray-900 dark:text-white'
+              } group-hover:text-blue-500 dark:group-hover:text-blue-400 hover:scale-105`}
             >
-              {theme === 'dark' ? <FiSun size={20} /> : <FiMoon size={20} />}
-            </motion.button>
+              PRASHANT.DEV
+            </a>
           </div>
 
-          {/* Mobile Navigation Button */}
-          <div className="flex md:hidden items-center space-x-4">
-            <motion.button
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-1">
+            {navItems.map((item, index) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 ${
+                  isScrolled 
+                    ? 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20' 
+                    : 'text-gray-900 dark:text-white/90 hover:text-blue-600 dark:hover:text-white hover:bg-blue-50/50 dark:hover:bg-white/10'
+                } ${
+                  animateNavbar ? 'animate-in slide-in-from-top-2 duration-500' : 'opacity-0 -translate-y-8'
+                }`}
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                {item.name}
+              </a>
+            ))}
+          </div>
+
+          {/* Theme Toggle Button */}
+          <div className={`flex items-center space-x-4 ${
+            animateNavbar ? 'animate-in slide-in-from-right-2 duration-500' : 'opacity-0 translate-x-8'
+          }`} style={{ animationDelay: '800ms' }}>
+            <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300"
-              aria-label="Toggle theme"
-              whileHover={{ scale: 1.1, rotate: 180 }}
-              whileTap={{ scale: 0.9 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              className={`p-2 rounded-lg transition-all duration-300 transform hover:scale-110 hover:rotate-12 ${
+                isScrolled 
+                  ? 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20' 
+                  : 'text-gray-900 dark:text-white/90 hover:text-blue-600 dark:hover:text-white hover:bg-blue-50/50 dark:hover:bg-white/10'
+              }`}
+              title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
             >
-              {theme === 'dark' ? <FiSun size={20} /> : <FiMoon size={20} />}
-            </motion.button>
-            <motion.button
+              <span className="text-lg">
+                {isDark ? '☀️' : '🌙'}
+              </span>
+            </button>
+
+            {/* Mobile Menu Button */}
+            <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300"
-              aria-label="Toggle menu"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
+              className={`md:hidden p-2 rounded-lg transition-all duration-300 transform hover:scale-110 ${
+                isScrolled 
+                  ? 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20' 
+                  : 'text-gray-900 dark:text-white/90 hover:text-blue-600 dark:hover:text-white hover:bg-blue-50/50 dark:hover:bg-white/10'
+              }`}
             >
-              {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-            </motion.button>
+              <div className="w-5 h-5 flex flex-col justify-center items-center">
+                <span className={`w-5 h-0.5 bg-current transform transition-all duration-300 ${
+                  isOpen ? 'rotate-45 translate-y-1.5' : '-translate-y-1'
+                }`} />
+                <span className={`w-5 h-0.5 bg-current transform transition-all duration-300 ${
+                  isOpen ? 'opacity-0' : 'opacity-100'
+                }`} />
+                <span className={`w-5 h-0.5 bg-current transform transition-all duration-300 ${
+                  isOpen ? '-rotate-45 -translate-y-1.5' : 'translate-y-1'
+                }`} />
+              </div>
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Navigation */}
+        <div className={`md:hidden transition-all duration-500 ease-in-out overflow-hidden ${
+          isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        }`}>
+          <div className="py-4 space-y-2">
+            {navItems.map((item, index) => (
+              <a
+                key={item.name}
+                href={item.href}
+                onClick={() => setIsOpen(false)}
+                className={`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 transform hover:scale-105 hover:translate-x-2 ${
+                  isScrolled 
+                    ? 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20' 
+                    : 'text-white/90 hover:text-white hover:bg-white/10'
+                } ${
+                  isOpen ? 'animate-in slide-in-from-right-2 duration-300' : 'opacity-0 translate-x-8'
+                }`}
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                {item.name}
+              </a>
+            ))}
           </div>
         </div>
       </div>
-
-      {/* Mobile Navigation Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div 
-            className="md:hidden absolute top-16 left-0 right-0 bg-white dark:bg-gray-900 border-t dark:border-gray-800"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            <div className="container mx-auto px-4 py-2">
-              {navItems.map((item, index) => (
-                <motion.a
-                  key={item.name}
-                  href={item.href}
-                  onClick={(e) => {
-                    smoothScroll(e, item.href)
-                    setIsOpen(false)
-                  }}
-                  className={`block py-2 text-base font-medium transition-colors ${
-                    activeSection === item.href.substring(1)
-                      ? 'text-blue-500 dark:text-blue-400'
-                      : 'text-gray-700 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400'
-                  }`}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ 
-                    duration: 0.2,
-                    delay: index * 0.1
-                  }}
-                  whileHover={{ x: 10 }}
-                >
-                  {item.name}
-                </motion.a>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.nav>
+    </nav>
   )
 }
 

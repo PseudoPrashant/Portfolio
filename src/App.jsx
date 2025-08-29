@@ -3,13 +3,12 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
 import Skills from './components/Skills'
+import Education from './components/Education'
 import Projects from './components/Projects'
 import Certifications from './components/Certifications'
-import Education from './components/Education'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
-import ScrollToTop from './components/ScrollToTop'
-import { FiSun, FiMoon } from 'react-icons/fi'
+// import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   const [theme, setTheme] = useState('light')
@@ -22,24 +21,22 @@ function App() {
   }, [])
 
   const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark')
+    const newTheme = theme === 'dark' ? 'light' : 'dark'
+    setTheme(newTheme)
     document.documentElement.classList.toggle('dark')
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+    <div className="min-h-screen bg-white dark:bg-gray-900">
       <Navbar theme={theme} toggleTheme={toggleTheme} />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Education />
-        <Projects />
-        <Certifications />
-        <Contact />
-      </main>
+      <Hero />
+      <About />
+      <Skills />
+      <Education />
+      <Projects />
+      <Certifications />
+      <Contact />
       <Footer />
-      <ScrollToTop />
     </div>
   )
 }
