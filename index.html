@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prashant | Frontend Developer</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Montserrat Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/4b2fbd4d76.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <!-- Background Effects -->
+  <div class="bg-grid"></div>
+  <div class="bg-glow glow-1"></div>
+  <div class="bg-glow glow-2"></div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <i class="fa-solid fa-terminal"></i> PRASHANT<span class="dot">.</span>
+    </div>
+
+    <nav class="nav-links">
+      <a href="#home" class="nav-item active"><i class="fa-solid fa-house"></i> HOME</a>
+      <a href="#about" class="nav-item"><i class="fa-solid fa-user"></i> ABOUT</a>
+      <a href="#skills" class="nav-item"><i class="fa-solid fa-bolt"></i> TECH STACK</a>
+      <a href="#projects" class="nav-item"><i class="fa-solid fa-code"></i> PROJECTS</a>
+      <a href="#certifications" class="nav-item"><i class="fa-solid fa-certificate"></i> CERTIFICATIONS</a>
+      <a href="#contact" class="nav-item"><i class="fa-solid fa-paper-plane"></i> CONTACT</a>
+    </nav>
+
+    <div class="nav-actions">
+      <div class="theme-toggle" id="themeToggle" title="Toggle Theme">
+        <i class="fa-solid fa-moon" id="themeIcon"></i>
+      </div>
+
+      <div class="menu-btn" id="menuBtn">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home"><i class="fa-solid fa-house"></i> HOME</a>
+    <a href="#about"><i class="fa-solid fa-user"></i> ABOUT</a>
+    <a href="#skills"><i class="fa-solid fa-bolt"></i> TECH STACK</a>
+    <a href="#projects"><i class="fa-solid fa-code"></i> PROJECTS</a>
+    <a href="#certifications"><i class="fa-solid fa-certificate"></i> CERTIFICATIONS</a>
+    <a href="#contact"><i class="fa-solid fa-paper-plane"></i> CONTACT</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content reveal">
+
+      <p class="tagline">
+        <i class="fa-solid fa-satellite-dish"></i> WELCOME TO MY CYBER SPACE
+      </p>
+
+      <h1>
+        Hi, I'm <span class="neon">Prashant</span><br />
+        <span class="typing" id="typingText"></span>
+      </h1>
+
+      <p class="hero-desc">
+        I build fast, responsive and futuristic web interfaces with modern frontend technologies.
+        My focus is smooth UI, clean code and scalable web applications.
+      </p>
+
+      <div class="achievement-badge">
+        <i class="fa-solid fa-trophy"></i>
+        <span>6th Rank in Festember Coding Competition (108 Teams)</span>
+      </div>
+
+      <div class="hero-btns">
+        <a href="#projects" class="btn neon-btn">
+          <i class="fa-solid fa-eye"></i> VIEW PROJECTS
+        </a>
+
+        <a href="https://drive.google.com/file/d/1_d434ntHP20iKISENnS7dKgTnbpDo7J4/view?usp=sharing"
+          target="_blank"
+          class="btn outline-btn">
+          <i class="fa-solid fa-file-lines"></i> VIEW CV
+        </a>
+      </div>
+
+      <div class="social-links">
+        <a href="https://github.com/PseudoPrashant" target="_blank" title="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+
+        <a href="https://linkedin.com/in/pseudoprashant/" target="_blank" title="LinkedIn">
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+
+        <a href="https://pseudoprashant.github.io/Portfolio/" target="_blank" title="Portfolio">
+          <i class="fa-solid fa-globe"></i>
+        </a>
+
+        <a href="https://leetcode.com/u/pseudoprashant/" target="_blank" title="LeetCode">
+          <i class="fa-solid fa-code"></i>
+        </a>
+
+        <a href="https://www.codechef.com/users/pseudoprashant" target="_blank" title="CodeChef">
+          <i class="fa-solid fa-utensils"></i>
+        </a>
+
+        <a href="https://www.hackerrank.com/dashboard" target="_blank" title="HackerRank">
+          <i class="fa-solid fa-terminal"></i>
+        </a>
+
+        <a href="mailto:pseudoprashant@gmail.com" title="Email">
+          <i class="fa-solid fa-envelope"></i>
+        </a>
+
+        <a href="tel:+919118715371" title="Phone">
+          <i class="fa-solid fa-phone"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-card floating reveal">
+      <div class="card-header">
+        <i class="fa-solid fa-shield-halved"></i> SYSTEM PROFILE
+      </div>
+      <div class="card-body">
+        <p><span class="label"><i class="fa-solid fa-user-astronaut"></i> ROLE:</span> Frontend Developer</p>
+        <p><span class="label"><i class="fa-solid fa-location-dot"></i> LOCATION:</span> Greater Noida, India</p>
+        <p><span class="label"><i class="fa-solid fa-envelope"></i> EMAIL:</span> pseudoprashant@gmail.com</p>
+        <p><span class="label"><i class="fa-solid fa-phone"></i> PHONE:</span> +91 9118715371</p>
+        <p><span class="label"><i class="fa-solid fa-circle-check"></i> STATUS:</span> Available for Work</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <h2 class="section-title reveal"><i class="fa-solid fa-user"></i> ABOUT ME</h2>
+
+    <div class="glass-box reveal">
+      <p>
+        I'm Prashant, a frontend developer who loves creating futuristic UI designs and smooth user experiences.
+        I focus on building responsive and high-performance websites using modern technologies like JavaScript,
+        React, and Next.js.
+        <br><br>
+        I enjoy working on real-world projects that solve problems, and I constantly upgrade my skills by
+        building, deploying, and improving applications.
+        <br><br>
+        My mission is simple: <span class="highlight">create clean UI, write structured code, and ship projects.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section class="section" id="skills">
+    <h2 class="section-title reveal">
+      <i class="fa-solid fa-screwdriver-wrench"></i> TECH STACK
+    </h2>
+
+    <div class="techstack-grid">
+
+      <div class="techstack-card reveal">
+        <h3><i class="fa-solid fa-code"></i> Languages & Frameworks</h3>
+        <ul>
+          <li><i class="fa-brands fa-python"></i> Python</li>
+          <li><i class="fa-brands fa-js"></i> JavaScript (ES6+)</li>
+          <li><i class="fa-solid fa-c"></i> C / C++</li>
+          <li><i class="fa-brands fa-html5"></i> HTML5</li>
+          <li><i class="fa-brands fa-css3-alt"></i> CSS3</li>
+          <li><i class="fa-brands fa-react"></i> React.js</li>
+          <li><i class="fa-solid fa-layer-group"></i> Next.js</li>
+          <li><i class="fa-brands fa-node-js"></i> Node.js</li>
+          <li><i class="fa-solid fa-server"></i> Express.js</li>
+          <li><i class="fa-brands fa-php"></i> PHP</li>
+          <li><i class="fa-solid fa-database"></i> MongoDB</li>
+          <li><i class="fa-solid fa-database"></i> MySQL</li>
+          <li><i class="fa-solid fa-database"></i> PostgreSQL</li>
+          <li><i class="fa-solid fa-wind"></i> Tailwind CSS</li>
+          <li><i class="fa-brands fa-bootstrap"></i> Bootstrap</li>
+          <li><i class="fa-solid fa-plug"></i> REST APIs</li>
+        </ul>
+      </div>
+
+      <div class="techstack-card reveal">
+        <h3><i class="fa-solid fa-toolbox"></i> Tools & Platforms</h3>
+        <ul>
+          <li><i class="fa-brands fa-git-alt"></i> Git</li>
+          <li><i class="fa-brands fa-github"></i> GitHub</li>
+          <li><i class="fa-solid fa-code"></i> VS Code</li>
+          <li><i class="fa-solid fa-chart-column"></i> Power BI</li>
+          <li><i class="fa-solid fa-file-excel"></i> MS Excel</li>
+          <li><i class="fa-solid fa-laptop-code"></i> MATLAB (Basic)</li>
+        </ul>
+      </div>
+
+      <div class="techstack-card reveal">
+        <h3><i class="fa-solid fa-brain"></i> Core CS</h3>
+        <ul>
+          <li><i class="fa-solid fa-diagram-project"></i> OOP</li>
+          <li><i class="fa-solid fa-database"></i> DBMS</li>
+          <li><i class="fa-solid fa-desktop"></i> Operating Systems</li>
+          <li><i class="fa-solid fa-code-branch"></i> Data Structures & Algorithms (DSA)</li>
+        </ul>
+      </div>
+
+      <div class="techstack-card reveal">
+        <h3><i class="fa-solid fa-wand-magic-sparkles"></i> Creative Tools</h3>
+        <ul>
+          <li><i class="fa-solid fa-film"></i> Adobe After Effects</li>
+          <li><i class="fa-solid fa-video"></i> Adobe Premiere Pro</li>
+          <li><i class="fa-solid fa-pen-nib"></i> Photoshop</li>
+          <li><i class="fa-solid fa-bezier-curve"></i> Illustrator</li>
+          <li><i class="fa-solid fa-palette"></i> Canva</li>
+          <li><i class="fa-solid fa-camera"></i> Photography</li>
+          <li><i class="fa-solid fa-clapperboard"></i> Video Editing</li>
+        </ul>
+      </div>
+
+      <div class="techstack-card reveal">
+        <h3><i class="fa-solid fa-people-group"></i> Soft Skills</h3>
+        <ul>
+          <li><i class="fa-solid fa-handshake"></i> Team Collaboration</li>
+          <li><i class="fa-solid fa-comments"></i> Communication</li>
+          <li><i class="fa-solid fa-crown"></i> Leadership</li>
+          <li><i class="fa-solid fa-calendar-check"></i> Event Management</li>
+          <li><i class="fa-solid fa-clock"></i> Time Management</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <h2 class="section-title reveal"><i class="fa-solid fa-code"></i> PROJECTS</h2>
+
+    <div class="projects-grid">
+
+      <div class="project-card reveal">
+        <h3><i class="fa-solid fa-users-gear"></i> Employee Management System</h3>
+        <p>
+          A complete admin dashboard system for managing employee records with authentication,
+          employee CRUD operations, search, and department filtering.
+        </p>
+        <p class="tech">Tech: PHP, MySQL, HTML, CSS</p>
+
+        <div class="project-links">
+          <a href="https://github.com/PseudoPrashant/employee-management-system" target="_blank">
+            <i class="fa-brands fa-github"></i> GITHUB
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <h3><i class="fa-solid fa-robot"></i> AI Interview Assistant</h3>
+        <p>
+          AI-powered mock interview assistant that provides automated evaluation and feedback
+          to improve interview performance.
+        </p>
+        <p class="tech">Tech: AI, NLP, Python / APIs</p>
+
+        <div class="project-links">
+          <a href="https://github.com/PseudoPrashant/ai-interview-assistant" target="_blank">
+            <i class="fa-brands fa-github"></i> GITHUB
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <h3><i class="fa-solid fa-file-circle-check"></i> AI Resume Matcher</h3>
+        <p>
+          Resume-to-job description matching tool that calculates match score and identifies missing skills.
+          Useful for optimizing resumes for job roles.
+        </p>
+        <p class="tech">Tech: AI, NLP, Python</p>
+
+        <div class="project-links">
+          <a href="https://github.com/PseudoPrashant/AI-resume-matcher" target="_blank">
+            <i class="fa-brands fa-github"></i> GITHUB
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <h3><i class="fa-solid fa-wallet"></i> Expense Tracker (Frontend)</h3>
+        <p>
+          Frontend UI for an expense tracking application with clean layout and modern interface.
+          Built to integrate with backend APIs.
+        </p>
+        <p class="tech">Tech: HTML, CSS, JavaScript</p>
+
+        <div class="project-links">
+          <a href="https://github.com/PseudoPrashant/expense-tracker-frontend" target="_blank">
+            <i class="fa-brands fa-github"></i> GITHUB
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <h3><i class="fa-solid fa-server"></i> Expense Tracker (Backend)</h3>
+        <p>
+          Backend REST API for expense tracking system with secure endpoints and database integration.
+          Handles expenses, categories and user data.
+        </p>
+        <p class="tech">Tech: Node.js, Express.js, MongoDB</p>
+
+        <div class="project-links">
+          <a href="https://github.com/PseudoPrashant/expense-tracker-backend" target="_blank">
+            <i class="fa-brands fa-github"></i> GITHUB
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <h3><i class="fa-solid fa-book"></i> Book Review API</h3>
+        <p>
+          REST API project for managing book reviews and user operations.
+          Includes authentication and structured endpoints.
+        </p>
+        <p class="tech">Tech: Node.js, Express.js, MongoDB</p>
+
+        <div class="project-links">
+          <a href="https://github.com/PseudoPrashant/book-review-api" target="_blank">
+            <i class="fa-brands fa-github"></i> GITHUB
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <h3><i class="fa-solid fa-globe"></i> Portfolio Website</h3>
+        <p>
+          My personal portfolio website showcasing projects, certifications, skills, and achievements.
+          Built with a cyber neon UI theme and responsive design.
+        </p>
+        <p class="tech">Tech: HTML, CSS, JavaScript</p>
+
+        <div class="project-links">
+          <a href="https://pseudoprashant.github.io/Portfolio/" target="_blank">
+            <i class="fa-solid fa-globe"></i> LIVE
+          </a>
+          <a href="https://github.com/PseudoPrashant/Portfolio" target="_blank">
+            <i class="fa-brands fa-github"></i> GITHUB
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="section" id="certifications">
+    <h2 class="section-title reveal">
+      <i class="fa-solid fa-certificate"></i> CERTIFICATIONS & ACHIEVEMENTS
+    </h2>
+
+    <div class="cert-grid">
+
+      <div class="cert-card reveal">
+        <h3><i class="fa-solid fa-chart-column"></i> Power BI Course Completion – TNX</h3>
+        <p>
+          Successfully completed a Power BI course focused on data visualization, dashboards,
+          reporting, and business insights using Power BI tools.
+        </p>
+
+        <a class="cert-link" target="_blank"
+          href="https://drive.google.com/file/d/1Ktjt4RNX7ROz7U636kq4ylvhhwQ_-F90/view?usp=drive_link">
+          <i class="fa-solid fa-eye"></i> VIEW CERTIFICATE
+        </a>
+      </div>
+
+      <div class="cert-card reveal">
+        <h3><i class="fa-brands fa-python"></i> Machine Learning Course Completion – Teachnook</h3>
+        <p>
+          Completed a Machine Learning course covering core ML concepts, model training,
+          and practical implementation using real-world datasets.
+        </p>
+
+        <a class="cert-link" target="_blank"
+          href="https://drive.google.com/file/d/1BXDthYk7-_QA9UvM1mRBIy_U1rH8sEwv/view?usp=drive_link">
+          <i class="fa-solid fa-eye"></i> VIEW CERTIFICATE
+        </a>
+      </div>
+
+      <div class="cert-card reveal">
+        <h3><i class="fa-solid fa-trophy"></i> Festember Coding Competition – GL Bajaj</h3>
+        <p>
+          Participated in an offline coding competition and secured
+          <span class="highlight">6th rank out of 108 teams</span>, demonstrating strong problem-solving
+          and competitive programming skills.
+        </p>
+
+        <a class="cert-link" target="_blank"
+          href="https://drive.google.com/file/d/1XCD6SQwaeish65_yJrk0g3yd6mM61iUI/view?usp=drive_link">
+          <i class="fa-solid fa-eye"></i> VIEW CERTIFICATE
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <h2 class="section-title reveal"><i class="fa-solid fa-paper-plane"></i> CONTACT</h2>
+
+    <div class="contact-box reveal">
+      <div class="contact-info">
+        <p><i class="fa-solid fa-location-dot"></i> Greater Noida, India</p>
+        <p><i class="fa-solid fa-envelope"></i> pseudoprashant@gmail.com</p>
+        <p><i class="fa-solid fa-phone"></i> +91 9118715371</p>
+
+        <p><i class="fa-brands fa-github"></i> <a class="contact-link" target="_blank" href="https://github.com/PseudoPrashant">GitHub</a></p>
+        <p><i class="fa-brands fa-linkedin"></i> <a class="contact-link" target="_blank" href="https://linkedin.com/in/pseudoprashant/">LinkedIn</a></p>
+        <p><i class="fa-solid fa-globe"></i> <a class="contact-link" target="_blank" href="https://pseudoprashant.github.io/Portfolio/">Portfolio</a></p>
+        <p><i class="fa-solid fa-code"></i> <a class="contact-link" target="_blank" href="https://leetcode.com/u/pseudoprashant/">LeetCode</a></p>
+        <p><i class="fa-solid fa-utensils"></i> <a class="contact-link" target="_blank" href="https://www.codechef.com/users/pseudoprashant">CodeChef</a></p>
+        <p><i class="fa-solid fa-terminal"></i> <a class="contact-link" target="_blank" href="https://www.hackerrank.com/dashboard">HackerRank</a></p>
+      </div>
+
+      <div class="contact-actions">
+        <a href="mailto:pseudoprashant@gmail.com" class="btn neon-btn">
+          <i class="fa-solid fa-envelope"></i> EMAIL ME
+        </a>
+
+        <a href="https://drive.google.com/file/d/1_d434ntHP20iKISENnS7dKgTnbpDo7J4/view?usp=sharing"
+          target="_blank"
+          class="btn outline-btn">
+          <i class="fa-solid fa-file-lines"></i> VIEW CV
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>
+      <i class="fa-solid fa-microchip"></i> © 2026 Prashant | Cyber Portfolio Mode Activated ⚡
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
