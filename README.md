@@ -1,6 +1,6 @@
 # Portfolio Website — Prashant Kumar Sharma
 
-A modern, responsive, single-file personal portfolio website built with **HTML, CSS, and vanilla JavaScript**.
+A modern, responsive personal portfolio website built with **HTML, CSS, and vanilla JavaScript**, focused on **Firmware & IoT Development**.
 
 This project highlights professional experience, skills, projects, education, certifications, and contact information in an interactive UI with smooth animations and micro-interactions.
 
@@ -10,7 +10,7 @@ This project highlights professional experience, skills, projects, education, ce
 - **Responsive design** for desktop, tablet, and mobile breakpoints
 - **Dark/Light theme toggle** with `localStorage` persistence
 - **Custom animated cursor** (auto-disabled on non-hover/touch devices)
-- **Hero particle canvas animation**
+- **Hero particle canvas animation** (pauses when off-screen via `IntersectionObserver`)
 - **3D tilt profile card** effect
 - **Project flip cards** for front/back project summaries
 - **Typing animation** for rotating role titles
@@ -18,25 +18,30 @@ This project highlights professional experience, skills, projects, education, ce
 - **Scroll progress indicator** and back-to-top button
 - **Skill bars** animated with `IntersectionObserver`
 - **Mobile hamburger menu** with auto-close behavior
+- **SEO-ready** with meta description and Open Graph tags
+- **Accessible** with `aria-label` attributes on icon-only controls
 
 ## 🧱 Tech Stack
 
-- **HTML5**
-- **CSS3** (custom properties, responsive media queries, transitions/animations)
-- **JavaScript (ES6+)**
-- **External assets/CDNs**
+- **HTML5** — Semantic markup with SEO and Open Graph meta tags
+- **CSS3** — Custom properties, responsive media queries, transitions/animations
+- **JavaScript (ES6+)** — `IntersectionObserver`, passive event listeners, `requestAnimationFrame`
+- **External CDNs**
   - Google Fonts (`DM Sans`, `Syne`)
-  - Font Awesome icons
+  - Font Awesome 6 icons
 
 ## 📁 Project Structure
 
 ```text
-.
-├── index.html   # Complete app (markup, styles, scripts)
+Portfolio/
+├── index.html              # HTML structure and content
+├── assets/
+│   ├── css/
+│   │   └── style.css       # All styles (dark/light themes, responsive breakpoints)
+│   └── js/
+│       └── script.js       # All interactivity (canvas, cursor, scroll, typing)
 └── README.md
 ```
-
-> Note: This project is intentionally packaged as a single-file site for easy hosting and portability.
 
 ## 🚀 Run Locally
 
@@ -59,26 +64,25 @@ Then open: `http://localhost:8080`
 
 ## 🌐 Deployment
 
-You can deploy this portfolio on any static hosting platform:
+This portfolio is deployed on **GitHub Pages**. It can also be hosted on:
 
-- GitHub Pages
 - Netlify
 - Vercel (static)
 - Cloudflare Pages
 
-Since everything is in `index.html`, deployment is straightforward.
+GitHub Pages serves `index.html` from the repository root by default — no build step or configuration is needed.
 
 ## 🎨 Customization Guide
 
 To personalize for your own profile:
 
-- **Name/Headline**: update hero section text
+- **Name/Headline**: update hero section text in `index.html`
 - **Social links**: update anchor URLs in hero + contact sections
 - **Resume links**: replace Google Drive URL where used
 - **Projects**: edit project cards in the `#projects` section
 - **Experience/Education/Certifications**: update section content
-- **Color palette**: modify CSS variables in `:root` and `body.light`
-- **Typing roles**: edit the `words` array in script
+- **Color palette**: modify CSS variables in `:root` and `body.light` inside `assets/css/style.css`
+- **Typing roles**: edit the `words` array in `assets/js/script.js`
 
 ## ⚙️ External Dependencies
 
@@ -92,8 +96,8 @@ If you need full offline support, replace these with local assets.
 ## 📧 Contact
 
 - **Email:** `pseudoprashant@gmail.com`
-- **LinkedIn:** `https://linkedin.com/in/pseudoprashant/`
-- **GitHub:** `https://github.com/PseudoPrashant`
+- **LinkedIn:** [linkedin.com/in/pseudoprashant](https://linkedin.com/in/pseudoprashant/)
+- **GitHub:** [github.com/PseudoPrashant](https://github.com/PseudoPrashant)
 
 ## 📄 License
 
